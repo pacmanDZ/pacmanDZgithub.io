@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Привет, Твиг!</title>
+</head>
+<body>
+
+<h1>Привет, Твиг!</h1>
+
+<ul>
+  {% for i in 1..10 %}
+    <li>
+      Item #{{i}}
+    </li>
+  {% endfor %}
+</ul>
+
+{% set persons = [
+  { name: 'Василий', surname: 'Иванович' },
+  { name: 'Порфирий', surname: 'Петрович' },
+  { name: 'Александр'},
+  { name: undefined },
+] %}
+
+<h2>Люди</h2>
+<ul>
+  {% for person in persons %}
+    {% if person.name %}
+      <li>
+        {{person.name}} {{person.surname}}
+      </li>
+    {% else %}
+      <li>
+        ! Неизвестный человек
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+{% include 'blocks/footer.html' %}
+
+</body>
+</html>
